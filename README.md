@@ -1,143 +1,42 @@
-# jQuery-plugins
-There are some plugins for JQuery. 
+Plugin created for educational purposes so do not use them in real projects
 
-All plugins created for educational purposes so do not use them in real projects
-# Truncates text jQuery plugin
 
-Truncates text is  plugin for jQuery which truncates text and adds &hellip; to the end if text has too many characters limited by consumer of plugin inputted value.
+# jQuery.trunc plugin
 
-### Tech
+Truncates text is  plugin for jQuery which truncates text and adds &hellip; to the end if text has too many characters limited by consumer of plugin inputted value. Click on `'...'` should allow you to see the whole text. 
 
-Truncates text use a jQuery JavaScript library and itself is open source with a https://github.com/bogdanvasylyk/jQuery-plugins/blob/master/jquery.truncates.js
- on GitHub.
 
 ### Installation
-
-Dillinger requires [Node.js](https://nodejs.org/) v4+ to run.
-
-Install the dependencies and devDependencies and start the server.
-
+Add downloaded plugin in the Header:
 ```sh
-$ cd dillinger
-$ npm install -d
-$ node app
+<script type="text/javascript" src="jquery.truncates.js"></script>
 ```
-
-For production environments...
-
+### Usage
+It can be used on element which include the text inside.
+Include invocation of trunk in the bottom of body:
 ```sh
-$ npm install --production
-$ npm run predeploy
-$ NODE_ENV=production node app
+$('.paragraph').trunc(100)
 ```
-
-### Plugins
-
-Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
-
-| Plugin | README |
-| ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md] [PlDb] |
-| Github | [plugins/github/README.md] [PlGh] |
-| Google Drive | [plugins/googledrive/README.md] [PlGd] |
-| OneDrive | [plugins/onedrive/README.md] [PlOd] |
-| Medium | [plugins/medium/README.md] [PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md] [PlGa] |
-
-
-### Development
-
-Want to contribute? Great!
-
-Dillinger uses Gulp + Webpack for fast developing.
-Make a change in your file and instantanously see your updates!
-
-Open your favorite Terminal and run these commands.
-
-First Tab:
+or use The Document Ready Event:
 ```sh
-$ node app
+$( document ).ready(function() {
+   $('.paragraph').trunc(100);
+});
 ```
-
-Second Tab:
+Trunc can accept as first argument amount of characters wich consumer want to show in the start page and as second argument an object of additional settings. There are Default Settings Object
 ```sh
-$ gulp watch
+{   'hellip': '&hellip;',  //text of link for showing full text
+    'secondPartClass':'continue',  //class name for second part of text
+    'hellipClass':'hellip',  //class name for second part for link
+    }
 ```
-
-(optional) Third:
+You can change a text of link `'...'` to `'>>read more'`, and for more comfortable use you can change name of class for new `<span>` elements.  Invokation Example with all arguments:
 ```sh
-$ karma test
+$('.paragraph').trunc(200,{
+            'hellip': '>>read more',
+            'secondPartClass':'lastPartOfParagraph',
+            'hellipClass':'button',
+        });
+});
 ```
-#### Building for source
-For production release:
-```sh
-$ gulp build --prod
-```
-Generating pre-built zip archives for distribution:
-```sh
-$ gulp build dist --prod
-```
-### Docker
-Dillinger is very easy to install and deploy in a Docker container.
-
-By default, the Docker will expose port 80, so change this within the Dockerfile if necessary. When ready, simply use the Dockerfile to build the image.
-
-```sh
-cd dillinger
-docker build -t joemccann/dillinger:${package.json.version}
-```
-This will create the dillinger image and pull in the necessary dependencies. Be sure to swap out `${package.json.version}` with the actual version of Dillinger.
-
-Once done, run the Docker image and map the port to whatever you wish on your host. In this example, we simply map port 8000 of the host to port 80 of the Docker (or whatever port was exposed in the Dockerfile):
-
-```sh
-docker run -d -p 8000:8080 --restart="always" <youruser>/dillinger:${package.json.version}
-```
-
-Verify the deployment by navigating to your server address in your preferred browser.
-
-```sh
-127.0.0.1:8000
-```
-
-#### Kubernetes + Google Cloud
-
-See [KUBERNETES.md](https://github.com/joemccann/dillinger/blob/master/KUBERNETES.md)
-
-
-### Todos
-
- - Write MOAR Tests
- - Add Night Mode
-
-License
-----
-
-MIT
-
-
-**Free Software, Hell Yeah!**
-
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
-
-
-   [dill]: <https://github.com/joemccann/dillinger>
-   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
-   [john gruber]: <http://daringfireball.net>
-   [df1]: <http://daringfireball.net/projects/markdown/>
-   [markdown-it]: <https://github.com/markdown-it/markdown-it>
-   [Ace Editor]: <http://ace.ajax.org>
-   [node.js]: <http://nodejs.org>
-   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
-   [jQuery]: <http://jquery.com>
-   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
-   [express]: <http://expressjs.com>
-   [AngularJS]: <http://angularjs.org>
-   [Gulp]: <http://gulpjs.com>
-
-   [PlDb]: <https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md>
-   [PlGh]: <https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md>
-   [PlGd]: <https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md>
-   [PlOd]: <https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md>
-   [PlMe]: <https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md>
-   [PlGa]: <https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md>
+As you see, using this plugin is very simple and can save your precious time.
